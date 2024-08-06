@@ -6,7 +6,6 @@ import os
 # Turn off environment variables
 os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-PYTHONUTF8=1 # ???
 
 
 # Load the MNIST dataset
@@ -28,11 +27,11 @@ model = tf.keras.models.Sequential([
 # Return a vector of logits/log-odds scores (1 score for each class)
 predictions = model(x_train[:1]).numpy()
 print('\nPREDICTIONS')
-predictions
+print(predictions)
 
 # Convert logits to probabilities (normalization)
 print('\nSOFTMAX')
-tf.nn.softmax(predictions).numpy()
+print(tf.nn.softmax(predictions).numpy())
 
 # Define a loss function for training
 ''' = negative log probability of the true class 
@@ -40,7 +39,7 @@ Here: probability ground truth is logits = 1/10
 Initial loss = -log(1/10) ~= 2.3'''
 loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
 print('\nLOSS')
-loss_fn(y_train[:1], predictions).numpy()
+print(loss_fn(y_train[:1], predictions).numpy())
 print('\n')
 
 # Configure and compile the model
