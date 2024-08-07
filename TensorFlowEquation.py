@@ -26,5 +26,5 @@ ys = np.array([-2.0, 1.0, 4.0, 7.0, 10.0, 13.0], dtype=float)
 # Fit method "fits xs to the ys 500 times"
 model.fit(xs, ys, epochs=500)
 
-# Predict
-print(model.predict(float(10.0)))
+# Predict (should predict close to 31)
+print(model.predict(np.array([10.0]), verbose='auto'))
